@@ -11,4 +11,5 @@ two processes running simultaneously. One process (`vertx.setPeriodic()`)
 writes a message to the
 console every two seconds, while the other (`vertx.createHttpServer()`) 
 serves requests on HTTP port 8080.
+
 [Shikanga Vertx Starter](https://github.com/sirAlexander/shikanga-reactive-programming/tree/master/shikanga-vertx-starter)
