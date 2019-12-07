@@ -7,9 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="shikanga-vertx-starter" />
+        <module name="domain-model" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="domain-model" target="1.5" />
+      <module name="shikanga-reactica" target="1.5" />
       <module name="shikanga-vertx-starter" target="1.8" />
     </bytecodeTargetLevel>
   </component>

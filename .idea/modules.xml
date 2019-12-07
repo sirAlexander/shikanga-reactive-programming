@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/shikanga-reactica/domain-model/domain-model.iml" filepath="$PROJECT_DIR$/shikanga-reactica/domain-model/domain-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shikanga-reactica/shikanga-reactica.iml" filepath="$PROJECT_DIR$/shikanga-reactica/shikanga-reactica.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/shikanga-reactive-programming.iml" filepath="$PROJECT_DIR$/.idea/shikanga-reactive-programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/shikanga-vertx-starter/shikanga-vertx-starter.iml" filepath="$PROJECT_DIR$/shikanga-vertx-starter/shikanga-vertx-starter.iml" />
     </modules>

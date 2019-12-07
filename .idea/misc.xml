@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/shikanga-vertx-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/shikanga-reactica/pom.xml" />
       </list>
     </option>
   </component>
