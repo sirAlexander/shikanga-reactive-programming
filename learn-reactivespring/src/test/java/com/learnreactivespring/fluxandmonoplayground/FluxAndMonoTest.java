@@ -2,6 +2,7 @@ package com.learnreactivespring.fluxandmonoplayground;
 
 import org.junit.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 public class FluxAndMonoTest {
@@ -74,6 +75,26 @@ public class FluxAndMonoTest {
                 .expectNext("Spring", "Spring Boot", "Reactive Spring")
                 .expectErrorMessage("Exception Occurred")
                 .verify();
+    }
+
+    @Test
+    public void monoTest(){
+
+        Mono<String> monoString = Mono.just("Spring");
+
+        StepVerifier.create(monoString.log())
+                .expectNext("Spring")
+                .verifyComplete();
+
+    }
+
+    @Test
+    public void monoTest_Error(){
+
+        StepVerifier.create(Mono.error(new RuntimeException("Error Occurred")).log())
+                .expectError(RuntimeException.class)
+                .verify();
+
     }
 
 }
