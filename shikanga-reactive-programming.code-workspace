@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "shikanga-reactica"
+		},
+		{
+			"path": "shikanga-vertx-starter"
+		},
+		{
+			"name": "learn-reactivespring",
+			"path": "learn-reactivespring"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
