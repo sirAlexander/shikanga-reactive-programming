@@ -1,4 +1,4 @@
-package com.learnreactivespring.learnreactivespring;
+package com.learnreactivespring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
