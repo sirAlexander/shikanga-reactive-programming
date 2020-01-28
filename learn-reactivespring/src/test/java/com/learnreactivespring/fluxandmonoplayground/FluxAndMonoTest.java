@@ -78,7 +78,7 @@ public class FluxAndMonoTest {
     }
 
     @Test
-    public void monoTest(){
+    public void monoTest() {
 
         Mono<String> monoString = Mono.just("Spring");
 
@@ -89,7 +89,7 @@ public class FluxAndMonoTest {
     }
 
     @Test
-    public void monoTest_Error(){
+    public void monoTest_Error() {
 
         StepVerifier.create(Mono.error(new RuntimeException("Error Occurred")).log())
                 .expectError(RuntimeException.class)
