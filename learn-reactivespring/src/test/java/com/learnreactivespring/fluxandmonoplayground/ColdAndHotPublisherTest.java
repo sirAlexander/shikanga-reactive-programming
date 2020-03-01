@@ -36,7 +36,7 @@ public class ColdAndHotPublisherTest {
 
         Thread.sleep(3000);
 
-        connectableFlux.subscribe(s -> System.out.println("Subscriber 2 : " + s));
+        connectableFlux.subscribe(s -> System.out.println("Subscriber 2 : " + s)); // does not emit the values from the beginning
 
         Thread.sleep(4000);
 
