@@ -92,7 +92,7 @@ public class FluxAndMonoCombineTest {
 
         Flux<String> mergedFlux = Flux.concat(flux1, flux2);
 
-        StepVerifier.withVirtualTime(() -> mergedFlux.log()) // Note: This now maintains order, but concat is slow.
+        StepVerifier.withVirtualTime(mergedFlux::log) // Note: This now maintains order, but concat is slow.
                 .expectSubscription()
                 .thenAwait(Duration.ofSeconds(6))
                 .expectNext("A", "B", "C","D", "E", "F")
