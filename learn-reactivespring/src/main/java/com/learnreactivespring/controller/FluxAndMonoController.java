@@ -12,7 +12,7 @@ import java.time.Duration;
 @RestController
 public class FluxAndMonoController {
 
-    @GetMapping("flux")
+    @GetMapping("/flux")
     public Flux<Integer> returnFlux(){
 
         return Flux.just(1, 2, 3, 4)
@@ -20,11 +20,18 @@ public class FluxAndMonoController {
                 .log();
     }
 
-    @GetMapping(value = "fluxstream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    @GetMapping(value = "/flux-stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Integer> returnFluxStream(){
 
         return Flux.just(1, 2, 3, 4, 5, 6, 7)
                 .delayElements(Duration.ofSeconds(1))
+                .log();
+    }
+
+    @GetMapping(value = "/infinite-flux-stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    public Flux<Long> returnInfiniteFluxStream(){
+
+        return Flux.interval(Duration.ofSeconds(1))
                 .log();
     }
 
