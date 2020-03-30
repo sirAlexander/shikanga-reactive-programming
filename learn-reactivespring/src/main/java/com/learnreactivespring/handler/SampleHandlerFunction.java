@@ -13,7 +13,7 @@ public class SampleHandlerFunction {
     public Mono<ServerResponse> flux(ServerRequest serverRequest) {
 
         return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .body(
                         Flux.just(1, 2, 3, 4).log(),
                         Integer.class
@@ -23,7 +23,7 @@ public class SampleHandlerFunction {
     public Mono<ServerResponse> mono(ServerRequest serverRequest) {
 
         return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .body(
                         Mono.just(1).log(),
                         Integer.class
