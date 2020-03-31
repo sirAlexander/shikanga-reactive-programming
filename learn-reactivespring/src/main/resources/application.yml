@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  data.momgodb:
+    host: localhost
+    port: 27017
+    database: local
+---
+spring:
+  profiles: nonprod
+  data.momgodb:
+    host: localhost
+    port: 27017
+    database: local
+---
+spring:
+  profiles: prod
+  data.momgodb:
+    host: localhost
+    port: 27017
+    database: local
