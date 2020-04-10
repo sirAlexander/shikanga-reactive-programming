@@ -1,5 +1,6 @@
 package com.learnreactivespring.controller.v1;
 
+import com.learnreactivespring.constants.ItemConstants;
 import com.learnreactivespring.document.Item;
 import com.learnreactivespring.repository.ItemReactiveRepository;
 import org.junit.Before;
@@ -91,6 +92,24 @@ public class ItemControllerTest {
                 .expectNextCount(4)
                 .verifyComplete();
     }
+
+    @Test
+    public void getOneItem() {
+        webTestClient.get().uri(ITEM_END_POINT_V1.concat("/{id}"), "ABC")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.price", 19.99);
+    }
+
+    @Test
+    public void getOneItem_notFound() {
+        webTestClient.get().uri(ITEM_END_POINT_V1.concat("/{id}"), "rtynfg")
+                .exchange()
+                .expectStatus().isNotFound();
+    }
+
+
 
 
 }
