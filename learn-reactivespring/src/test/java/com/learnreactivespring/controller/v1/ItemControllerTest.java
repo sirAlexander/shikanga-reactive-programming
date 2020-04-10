@@ -1,6 +1,5 @@
 package com.learnreactivespring.controller.v1;
 
-import com.learnreactivespring.constants.ItemConstants;
 import com.learnreactivespring.document.Item;
 import com.learnreactivespring.repository.ItemReactiveRepository;
 import org.junit.Before;
@@ -132,6 +131,34 @@ public class ItemControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(Void.class);
+    }
+
+    @Test
+    public void updateItem() {
+        double newPrice = 129.99;
+        Item item = new Item(null, "Beats Headphones", newPrice);
+
+        webTestClient.put().uri(ITEM_END_POINT_V1.concat("/{id}"), "ABC")
+                .contentType(MediaType.APPLICATION_PROBLEM_JSON_UTF8)
+                .accept(MediaType.APPLICATION_PROBLEM_JSON_UTF8)
+                .body(Mono.just(item), Item.class)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.price", newPrice);
+    }
+
+    @Test
+    public void updateItem_notFound() {
+        double newPrice = 129.99;
+        Item item = new Item(null, "Beats Headphones", newPrice);
+
+        webTestClient.put().uri(ITEM_END_POINT_V1.concat("/{id}"), "gfhjgh")
+                .contentType(MediaType.APPLICATION_PROBLEM_JSON_UTF8)
+                .accept(MediaType.APPLICATION_PROBLEM_JSON_UTF8)
+                .body(Mono.just(item), Item.class)
+                .exchange()
+                .expectStatus().isNotFound();
     }
 
 

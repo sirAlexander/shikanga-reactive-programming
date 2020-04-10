@@ -9,12 +9,11 @@ import reactor.core.publisher.Mono;
 import java.time.Duration;
 
 
-
 @RestController
 public class FluxAndMonoController {
 
     @GetMapping("/flux")
-    public Flux<Integer> returnFlux(){
+    public Flux<Integer> returnFlux() {
 
         return Flux.just(1, 2, 3, 4)
                 .delayElements(Duration.ofSeconds(1))
@@ -22,7 +21,7 @@ public class FluxAndMonoController {
     }
 
     @GetMapping(value = "/flux-stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-    public Flux<Integer> returnFluxStream(){
+    public Flux<Integer> returnFluxStream() {
 
         return Flux.just(1, 2, 3, 4, 5, 6, 7)
                 .delayElements(Duration.ofSeconds(1))
@@ -30,14 +29,14 @@ public class FluxAndMonoController {
     }
 
     @GetMapping(value = "/infinite-flux-stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-    public Flux<Long> returnInfiniteFluxStream(){
+    public Flux<Long> returnInfiniteFluxStream() {
 
         return Flux.interval(Duration.ofSeconds(1))
                 .log();
     }
 
     @GetMapping("/mono")
-    public Mono<Integer> returnMono(){
+    public Mono<Integer> returnMono() {
 
         return Mono.just(1)
                 .log();
