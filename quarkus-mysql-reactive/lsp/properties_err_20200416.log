@@ -1,0 +1,196 @@
+Apr 16, 2020 8:54:02 PM com.redhat.quarkus.ls.QuarkusLanguageServer initialize
+INFO: Initializing Quarkus server 0.0.4-20191120-1547 with /Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home
+Apr 16, 2020 8:54:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "properties",
+      "version": -1,
+      "text": "package uk.co.shikanga.service;\n\nimport io.smallrye.mutiny.Multi;\nimport io.smallrye.mutiny.Uni;\nimport uk.co.shikanga.data.Fruit;\nimport uk.co.shikanga.data.FruitRepository;\n\nimport javax.inject.Inject;\nimport javax.inject.Singleton;\n\n@Singleton\npublic final class FruitServiceImpl implements FruitService {\n\n    private final FruitRepository fruitRepository;\n\n    @Inject\n    public FruitServiceImpl(FruitRepository fruitRepository) {\n        this.fruitRepository \u003d fruitRepository;\n    }\n\n    @Override\n    public Multi\u003cFruit\u003e findAll() {\n        return fruitRepository.findAll()\n                .;\n    }\n\n    @Override\n    public Uni\u003cFruit\u003e findById(Long id) {\n        return fruitRepository.findById(id);\n    }\n\n    @Override\n    public Uni\u003cLong\u003e save(Fruit fruit) {\n        return fruitRepository.save(fruit);\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e update(Fruit fruit) {\n        return fruitRepository.update(fruit);\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e delete(Long id) {\n        return fruitRepository.delete(id);\n    }\n\n    @Override\n    public void initDb() {\n        fruitRepository.initDb();\n    }\n}\n"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 12 more
+Caused by: java.lang.IllegalArgumentException: Property must not be null: uri
+	at org.eclipse.lsp4j.util.Preconditions.checkNotNull(Preconditions.java:29)
+	at org.eclipse.lsp4j.TextDocumentItem.setUri(TextDocumentItem.java:70)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:47)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:41)
+	at com.redhat.quarkus.ls.commons.ModelTextDocument.<init>(ModelTextDocument.java:37)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:34)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:24)
+	at com.redhat.quarkus.ls.commons.TextDocuments.onDidOpenTextDocument(TextDocuments.java:93)
+	at com.redhat.quarkus.ls.QuarkusTextDocumentService.didOpen(QuarkusTextDocumentService.java:107)
+	... 17 more
+
+Apr 16, 2020 8:54:16 PM com.redhat.quarkus.ls.QuarkusLanguageServer initialize
+INFO: Initializing Quarkus server 0.0.4-20191120-1547 with /Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home
+Apr 16, 2020 8:54:16 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "properties",
+      "version": -1,
+      "text": "package uk.co.shikanga.service;\n\nimport io.smallrye.mutiny.Multi;\nimport io.smallrye.mutiny.Uni;\nimport uk.co.shikanga.data.Fruit;\nimport uk.co.shikanga.data.FruitRepository;\n\nimport javax.inject.Inject;\nimport javax.inject.Singleton;\n\n@Singleton\npublic final class FruitServiceImpl implements FruitService {\n\n    private final FruitRepository fruitRepository;\n\n    @Inject\n    public FruitServiceImpl(FruitRepository fruitRepository) {\n        this.fruitRepository \u003d fruitRepository;\n    }\n\n    @Override\n    public Multi\u003cFruit\u003e findAll() {\n        return fruitRepository.findAll();\n    }\n\n    @Override\n    public Uni\u003cFruit\u003e findById(Long id) {\n        return null;\n    }\n\n    @Override\n    public Uni\u003cLong\u003e save(Fruit fruit) {\n        return null;\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e update(Fruit fruit) {\n        return null;\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e delete(Long id) {\n        return null;\n    }\n\n    @Override\n    public void initDb() {\n\n    }\n}\n"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 12 more
+Caused by: java.lang.IllegalArgumentException: Property must not be null: uri
+	at org.eclipse.lsp4j.util.Preconditions.checkNotNull(Preconditions.java:29)
+	at org.eclipse.lsp4j.TextDocumentItem.setUri(TextDocumentItem.java:70)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:47)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:41)
+	at com.redhat.quarkus.ls.commons.ModelTextDocument.<init>(ModelTextDocument.java:37)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:34)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:24)
+	at com.redhat.quarkus.ls.commons.TextDocuments.onDidOpenTextDocument(TextDocuments.java:93)
+	at com.redhat.quarkus.ls.QuarkusTextDocumentService.didOpen(QuarkusTextDocumentService.java:107)
+	... 17 more
+
+Apr 16, 2020 8:54:20 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didClose",
+  "params": {
+    "textDocument": {}
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 12 more
+Caused by: java.lang.IllegalArgumentException: Property must not be null: uri
+	at org.eclipse.lsp4j.util.Preconditions.checkNotNull(Preconditions.java:29)
+	at org.eclipse.lsp4j.PublishDiagnosticsParams.<init>(PublishDiagnosticsParams.java:45)
+	at com.redhat.quarkus.ls.QuarkusTextDocumentService.didClose(QuarkusTextDocumentService.java:122)
+	... 17 more
+
+Apr 16, 2020 8:54:26 PM com.redhat.quarkus.ls.QuarkusLanguageServer initialize
+INFO: Initializing Quarkus server 0.0.4-20191120-1547 with /Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home
+Apr 16, 2020 8:54:26 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "properties",
+      "version": -1,
+      "text": "package uk.co.shikanga.service;\n\nimport io.smallrye.mutiny.Multi;\nimport io.smallrye.mutiny.Uni;\nimport uk.co.shikanga.data.Fruit;\nimport uk.co.shikanga.data.FruitRepository;\n\nimport javax.inject.Inject;\nimport javax.inject.Singleton;\n\n@Singleton\npublic final class FruitServiceImpl implements FruitService {\n\n    private final FruitRepository fruitRepository;\n\n    @Inject\n    public FruitServiceImpl(FruitRepository fruitRepository) {\n        this.fruitRepository \u003d fruitRepository;\n    }\n\n    @Override\n    public Multi\u003cFruit\u003e findAll() {\n        return fruitRepository.findAll()\n                .;\n    }\n\n    @Override\n    public Uni\u003cFruit\u003e findById(Long id) {\n        return fruitRepository.findById(id);\n    }\n\n    @Override\n    public Uni\u003cLong\u003e save(Fruit fruit) {\n        return fruitRepository.save(fruit);\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e update(Fruit fruit) {\n        return fruitRepository.update(fruit);\n    }\n\n    @Override\n    public Uni\u003cBoolean\u003e delete(Long id) {\n        return fruitRepository.delete(id);\n    }\n\n    @Override\n    public void initDb() {\n        fruitRepository.initDb();\n    }\n}\n"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 12 more
+Caused by: java.lang.IllegalArgumentException: Property must not be null: uri
+	at org.eclipse.lsp4j.util.Preconditions.checkNotNull(Preconditions.java:29)
+	at org.eclipse.lsp4j.TextDocumentItem.setUri(TextDocumentItem.java:70)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:47)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:41)
+	at com.redhat.quarkus.ls.commons.ModelTextDocument.<init>(ModelTextDocument.java:37)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:34)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:24)
+	at com.redhat.quarkus.ls.commons.TextDocuments.onDidOpenTextDocument(TextDocuments.java:93)
+	at com.redhat.quarkus.ls.QuarkusTextDocumentService.didOpen(QuarkusTextDocumentService.java:107)
+	... 17 more
+
+Apr 16, 2020 8:54:31 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didClose",
+  "params": {
+    "textDocument": {}
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)

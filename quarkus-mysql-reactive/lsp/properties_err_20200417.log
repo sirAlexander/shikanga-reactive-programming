@@ -1,0 +1,47 @@
+Apr 17, 2020 9:06:13 AM com.redhat.quarkus.ls.QuarkusLanguageServer initialize
+INFO: Initializing Quarkus server 0.0.4-20191120-1547 with /Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home
+Apr 17, 2020 9:06:13 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "languageId": "properties",
+      "version": -1,
+      "text": "//\n// Source code recreated from a .class file by IntelliJ IDEA\n// (powered by Fernflower decompiler)\n//\n\npackage io.smallrye.mutiny;\n\nimport io.smallrye.mutiny.groups.MultiBroadcast;\nimport io.smallrye.mutiny.groups.MultiCollect;\nimport io.smallrye.mutiny.groups.MultiConvert;\nimport io.smallrye.mutiny.groups.MultiCreate;\nimport io.smallrye.mutiny.groups.MultiCreateBy;\nimport io.smallrye.mutiny.groups.MultiGroup;\nimport io.smallrye.mutiny.groups.MultiOnCompletion;\nimport io.smallrye.mutiny.groups.MultiOnEvent;\nimport io.smallrye.mutiny.groups.MultiOnFailure;\nimport io.smallrye.mutiny.groups.MultiOnItem;\nimport io.smallrye.mutiny.groups.MultiOverflow;\nimport io.smallrye.mutiny.groups.MultiSubscribe;\nimport io.smallrye.mutiny.groups.MultiTransform;\nimport io.smallrye.mutiny.helpers.ParameterValidation;\nimport java.util.concurrent.Executor;\nimport java.util.function.Function;\nimport java.util.function.Predicate;\nimport org.reactivestreams.Publisher;\n\npublic interface Multi\u003cT\u003e extends Publisher\u003cT\u003e {\n    static MultiCreate createFrom() {\n        return MultiCreate.INSTANCE;\n    }\n\n    static MultiCreateBy createBy() {\n        return MultiCreateBy.INSTANCE;\n    }\n\n    MultiSubscribe\u003cT\u003e subscribe();\n\n    MultiOnItem\u003cT\u003e onItem();\n\n    default \u003cO\u003e O then(Function\u003cMulti\u003cT\u003e, O\u003e stage) {\n        return ((Function)ParameterValidation.nonNull(stage, \"stage\")).apply(this);\n    }\n\n    Uni\u003cT\u003e toUni();\n\n    MultiOnFailure\u003cT\u003e onFailure();\n\n    MultiOnFailure\u003cT\u003e onFailure(Predicate\u003c? super Throwable\u003e var1);\n\n    MultiOnFailure\u003cT\u003e onFailure(Class\u003c? extends Throwable\u003e var1);\n\n    MultiOnEvent\u003cT\u003e on();\n\n    Multi\u003cT\u003e cache();\n\n    MultiCollect\u003cT\u003e collectItems();\n\n    MultiGroup\u003cT\u003e groupItems();\n\n    Multi\u003cT\u003e emitOn(Executor var1);\n\n    Multi\u003cT\u003e subscribeOn(Executor var1);\n\n    MultiOnCompletion\u003cT\u003e onCompletion();\n\n    MultiTransform\u003cT\u003e transform();\n\n    MultiOverflow\u003cT\u003e onOverflow();\n\n    MultiBroadcast\u003cT\u003e broadcast();\n\n    MultiConvert\u003cT\u003e convert();\n\n    default \u003cO\u003e Multi\u003cO\u003e map(Function\u003c? super T, ? extends O\u003e mapper) {\n        return this.onItem().apply((Function)ParameterValidation.nonNull(mapper, \"mapper\"));\n    }\n\n    default \u003cO\u003e Multi\u003cO\u003e flatMap(Function\u003c? super T, ? extends Publisher\u003c? extends O\u003e\u003e mapper) {\n        return this.onItem().producePublisher(mapper).merge();\n    }\n\n    default \u003cO\u003e Multi\u003cO\u003e concatMap(Function\u003c? super T, ? extends Publisher\u003c? extends O\u003e\u003e mapper) {\n        return this.onItem().producePublisher(mapper).concatenate();\n    }\n}\n"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at com.redhat.quarkus.ls.commons.ParentProcessWatcher.lambda$apply$0(ParentProcessWatcher.java:140)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 12 more
+Caused by: java.lang.IllegalArgumentException: Property must not be null: uri
+	at org.eclipse.lsp4j.util.Preconditions.checkNotNull(Preconditions.java:29)
+	at org.eclipse.lsp4j.TextDocumentItem.setUri(TextDocumentItem.java:70)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:47)
+	at com.redhat.quarkus.ls.commons.TextDocument.<init>(TextDocument.java:41)
+	at com.redhat.quarkus.ls.commons.ModelTextDocument.<init>(ModelTextDocument.java:37)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:34)
+	at com.redhat.quarkus.ls.commons.ModelTextDocuments.createDocument(ModelTextDocuments.java:24)
+	at com.redhat.quarkus.ls.commons.TextDocuments.onDidOpenTextDocument(TextDocuments.java:93)
+	at com.redhat.quarkus.ls.QuarkusTextDocumentService.didOpen(QuarkusTextDocumentService.java:107)
+	... 17 more
+
