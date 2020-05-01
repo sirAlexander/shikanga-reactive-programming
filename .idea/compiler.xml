@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="shikanga-vertx-starter" />
         <module name="domain-model" />
+        <module name="quarkus-mysql-reactive" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="domain-model" target="1.5" />
+      <module name="quarkus-mysql-reactive" target="11" />
       <module name="shikanga-reactica" target="1.5" />
       <module name="shikanga-vertx-starter" target="1.8" />
     </bytecodeTargetLevel>

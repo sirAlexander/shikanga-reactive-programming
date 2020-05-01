@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="Quarkus" url="file://$PROJECT_DIR$/quarkus-mysql-reactive" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/shikanga-vertx-starter/pom.xml" />
         <option value="$PROJECT_DIR$/shikanga-reactica/pom.xml" />
+        <option value="$PROJECT_DIR$/quarkus-mysql-reactive/pom.xml" />
       </list>
     </option>
   </component>
