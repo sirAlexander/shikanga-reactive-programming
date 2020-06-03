@@ -14,9 +14,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static com.learnreactivespring.constants.ItemConstants.ITEM_FUNCTIONAL_END_POINT_V1;
 
@@ -58,6 +60,36 @@ public class ItemsHandlerTest extends TestCase {
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
                 .expectBodyList(Item.class)
                 .hasSize(4);
+    }
+
+    @Test
+    public void getAllItems_approach2() {
+        webTestClient.get().uri(ITEM_FUNCTIONAL_END_POINT_V1)
+                .exchange()
+                .expectStatus().isOk()
+                .expectHeader().contentType(MediaType.APPLICATION_JSON)
+                .expectBodyList(Item.class)
+                .hasSize(4)
+                .consumeWith(
+                        response -> Objects.requireNonNull(response.getResponseBody()).forEach(
+                                item -> assertTrue(Objects.nonNull(item.getId()))
+                        )
+                );
+    }
+
+    @Test
+    public void getAllItems_approach3() {
+        Flux<Item> itemsFlux = webTestClient.get().uri(ITEM_FUNCTIONAL_END_POINT_V1)
+                .exchange()
+                .expectStatus().isOk()
+                .expectHeader().contentType(MediaType.APPLICATION_JSON)
+                .returnResult(Item.class)
+                .getResponseBody();
+
+        StepVerifier.create(itemsFlux.log(" value from network :"))
+                .expectSubscription()
+                .expectNextCount(4)
+                .verifyComplete();
     }
 
 }
