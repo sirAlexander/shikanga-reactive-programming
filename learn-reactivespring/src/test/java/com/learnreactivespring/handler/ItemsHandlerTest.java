@@ -92,4 +92,20 @@ public class ItemsHandlerTest extends TestCase {
                 .verifyComplete();
     }
 
+    @Test
+    public void getOneItem() {
+        webTestClient.get().uri(ITEM_FUNCTIONAL_END_POINT_V1.concat("/{id}"), "ABC")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.price", 19.99);
+    }
+
+    @Test
+    public void getOneItem_notFound() {
+        webTestClient.get().uri(ITEM_FUNCTIONAL_END_POINT_V1.concat("/{id}"), "rtynfg")
+                .exchange()
+                .expectStatus().isNotFound();
+    }
+
 }
