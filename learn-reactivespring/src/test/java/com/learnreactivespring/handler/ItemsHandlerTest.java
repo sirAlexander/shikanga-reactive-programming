@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static com.learnreactivespring.constants.ItemConstants.ITEM_END_POINT_V1;
 import static com.learnreactivespring.constants.ItemConstants.ITEM_FUNCTIONAL_END_POINT_V1;
 
 @SpringBootTest
@@ -122,6 +123,15 @@ public class ItemsHandlerTest extends TestCase {
                 .jsonPath("$.id").isNotEmpty()
                 .jsonPath("$.description").isEqualTo("Iphone X")
                 .jsonPath("$.price").isEqualTo(999.99);
+    }
+
+    @Test
+    public void deleteItem() {
+        webTestClient.delete().uri(ITEM_FUNCTIONAL_END_POINT_V1.concat("/{id}"), "ABC")
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Void.class);
     }
 
 }
