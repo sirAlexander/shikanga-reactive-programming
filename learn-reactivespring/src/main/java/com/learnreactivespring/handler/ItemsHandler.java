@@ -9,6 +9,9 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
+
+import static com.learnreactivespring.constants.ItemConstants.ITEM_FUNCTIONAL_END_POINT_V1;
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 
 @Component
@@ -41,7 +44,8 @@ public class ItemsHandler {
 
         Mono<Item> itemToBeInserted = serverRequest.bodyToMono(Item.class);
 
-        return itemToBeInserted.flatMap(item -> ServerResponse.ok()
+        return itemToBeInserted.flatMap(item ->
+                ServerResponse.created(URI.create(ITEM_FUNCTIONAL_END_POINT_V1.concat("/" + item.getId())))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(itemReactiveRepository.save(item), Item.class)
         );
