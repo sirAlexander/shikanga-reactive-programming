@@ -13,6 +13,7 @@ import static com.learnreactivespring.constants.ItemConstants.ITEM_FUNCTIONAL_EN
 import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
 @Configuration
@@ -28,7 +29,9 @@ public class ItemsRouter {
                 .andRoute(POST(ITEM_FUNCTIONAL_END_POINT_V1).and(accept(MediaType.APPLICATION_JSON))
                 ,itemsHandler::createItem)
                 .andRoute(DELETE(ITEM_FUNCTIONAL_END_POINT_V1.concat("/{id}")).and(accept(MediaType.APPLICATION_JSON))
-                ,itemsHandler::deleteItem);
+                ,itemsHandler::deleteItem)
+                .andRoute(PUT(ITEM_FUNCTIONAL_END_POINT_V1.concat("/{id}")).and(accept(MediaType.APPLICATION_JSON))
+                ,itemsHandler::updateItem);
     }
 
 }
